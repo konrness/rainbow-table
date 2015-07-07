@@ -23,7 +23,7 @@ $rainbow = new RainbowTable($inputStr, $inputLen);
 
 $actual = $rainbow->getPermutations();
 
-assert(print_r($expected, true) == print_r($actual, true));
+assertEquals($expected, $actual, "Failed asserting all permutations generated.");
 
 ////// TEST RAINBOW TABLE GENERATOR //////
 
@@ -41,7 +41,7 @@ $rainbow = new RainbowTable($inputStr, $inputLen);
 
 $actual = $rainbow->generateRainbowTable();
 
-assert(print_r($expected, true) == print_r($actual, true));
+assertEquals($expected, $actual, "Failed asserting rainbow tables generated.");
 
 ////// TEST UN-HASHER //////
 
@@ -53,6 +53,28 @@ $rainbow = new RainbowTable($inputStr, $inputLen);
 $actual   = $rainbow->unHash('81b5dd04bf5cbc172eeb34bb8062fde1');
 $expected = 'a23c';
 
-assert(print_r($expected, true) == print_r($actual, true));
+assertEquals($expected, $actual, "Failed asserting hash was found.");
 
-echo "\n";
+echo PHP_EOL . PHP_EOL;
+
+if (empty($failed)) {
+    echo "\033[1;30m\033[42mOK\033[0m" . PHP_EOL;
+} else {
+    echo implode(PHP_EOL, $failed) . PHP_EOL;
+    echo PHP_EOL . "\033[1;37m\033[41mFail!\033[0m" . PHP_EOL;
+}
+
+function assertEquals($expected, $actual, $message) {
+
+    global $failed;
+
+    if (! @assert(print_r($expected, true) == print_r($actual, true))) {
+        echo "\033[1;37m\033[41mF\033[0m";
+
+        $failed[] = sprintf(
+            $message . "\nExpected:\n%s \n\nFound: %s",
+            print_r($expected, true),
+            print_r($actual, true)
+        );
+    }
+}

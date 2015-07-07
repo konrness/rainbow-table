@@ -4,11 +4,12 @@
  *
  * Hack the Password
  *
- * Usage: php kness.php
- *
  * @author Konr Ness <konr.ness@nerdery.com>
  */
 
+/**
+ * Rainbow Table class for generating MD5 hash rainbow tables and finding matches
+ */
 class RainbowTable
 {
 

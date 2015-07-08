@@ -74,6 +74,7 @@ class RainbowTable
         array_walk(
             $rainbowTable,
             function(&$value, $key) {
+                // Requirement: The password encryption uses md5
                 $value = md5($key);
             }
         );

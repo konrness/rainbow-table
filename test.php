@@ -1,4 +1,13 @@
 <?php
+/**
+ * Challenge Yourselph - 010
+ *
+ * Hack the Password
+ *
+ * Usage: php test.php
+ *
+ * @author Konr Ness <konr.ness@gmail.com>
+ */
 
 require 'RainbowTable.php';
 

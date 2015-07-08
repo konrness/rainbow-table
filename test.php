@@ -17,13 +17,16 @@ $expected = array(
     'ca',
     'cb',
     'cc',
+    'a',
+    'b',
+    'c',
 );
 
 $rainbow = new RainbowTable($inputStr, $inputLen);
 
 $actual = $rainbow->getPermutations();
 
-assertEquals($expected, $actual, "Failed asserting all permutations generated.");
+assertEquals($expected, $actual, "Failed asserting all 1- and 2-character permutations generated.");
 
 ////// TEST RAINBOW TABLE GENERATOR //////
 
@@ -35,6 +38,8 @@ $expected = array(
     '187ef4436122d1cc2f40dc2b92f0eba0' => 'ab',
     '07159c47ee1b19ae4fb9c40d480856c4' => 'ba',
     '21ad0bd836b90d08f4cf640b4c298e7c' => 'bb',
+    '0cc175b9c0f1b6a831c399e269772661' => 'a',
+    '92eb5ffee6ae2fec3ad71c777531578f' => 'b',
 );
 
 $rainbow = new RainbowTable($inputStr, $inputLen);
@@ -76,5 +81,7 @@ function assertEquals($expected, $actual, $message) {
             print_r($expected, true),
             print_r($actual, true)
         );
+    } else {
+        echo ".";
     }
 }

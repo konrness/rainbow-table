@@ -49,7 +49,15 @@ class RainbowTable
      */
     public function getPermutations()
     {
-        return $this->permute($this->length);
+        $permutations = array();
+
+        // Requirement: The maximum password length is 4 because it’s a pin number
+        // Generate permutations for 1, 2, 3 & 4 character pin numbers
+        for ($i = $this->length; $i > 0; $i--) {
+            $permutations = array_merge($permutations,$this->permute($i));
+        }
+
+        return $permutations;
     }
 
     /**
